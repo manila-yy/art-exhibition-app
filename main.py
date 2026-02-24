@@ -50,7 +50,7 @@ def get_survey_data():
     client = gspread.authorize(creds)
     
     # スプレッドシート名を確認！（あなたのファイル名に合わせてください）
-    sheet_name = 'フォームの回答 1'
+    sheet_name = '夢想郷展　来場者アンケート'
     
     try:
         sheet = client.open(sheet_name).sheet1
@@ -68,8 +68,8 @@ try:
     df = get_survey_data()
     
     # 質問文（※一言一句合わせる！）
-    col_votes = '特に気になった作品・お気に入りの作品の番号を教えてください。（複数選択可）' 
-    col_comments = '展覧会全体のご感想や、作品へのメッセージなどをご自由にお書きください。'
+    col_votes = '気になった作品・お気に入りの作品の番号を教えてください(複数選択可)。' 
+    col_comments = '展覧会全体への感想や、作品へのメッセージなど自由にお書きください。'
     
     if not df.empty and col_votes in df.columns:
         # 集計処理
@@ -106,3 +106,4 @@ try:
 
 except Exception as e:
     st.error(f"予期せぬエラーが発生しました: {e}")
+
